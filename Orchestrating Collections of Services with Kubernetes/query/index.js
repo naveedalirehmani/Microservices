@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios');
 
+const PORT = process.env.PORT || 4002
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -49,7 +51,7 @@ app.post('/events', (req, res) => {
   return res.send({});
 });
 
-app.listen(4002, async () => {
+app.listen(PORT, async () => {
   console.log('Listening on 4002');
 
   const res = await axios.get('http://localhost:4005/events');
