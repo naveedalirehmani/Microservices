@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
 
+const PORT = process.env.PORT || 4003
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -25,6 +27,6 @@ app.post('/events', async (req, res) => {
   return res.send({});
 });
 
-app.listen(4003, () => {
+app.listen(PORRT, () => {
   console.log('Listening on 4003');
 });
