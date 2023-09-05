@@ -5,4 +5,4 @@ metadata:
 spec:
   containers:
     - name: posts
-      image: naveedalirehmani/posts:0.0.1
+      image: naveedalirehmani/posts:0.0.1 
