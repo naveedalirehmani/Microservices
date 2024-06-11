@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: event-bus-depl
+  name: comments-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: event-bus
+      app: comments
   template:
     metadata:
       labels:
-        app: event-bus
+        app: comments
     spec:
       containers:
-        - name: event-bus
-          image: naveedalirehmani/event-bus:latest
+        - name: comments
+          image: naveedalirehmani/comments:latest
