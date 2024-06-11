@@ -13,7 +13,7 @@ app.post('/events', async (req, res) => {
   if (type === 'CommentCreated') {
     const status = data.content.includes('orange') ? 'rejected' : 'approved';
 
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-clusterip:4005/events', {
       type: 'CommentModerated',
       data: {
         id: data.id,
@@ -27,6 +27,6 @@ app.post('/events', async (req, res) => {
   return res.send({});
 });
 
-app.listen(PORRT, () => {
+app.listen(PORT, () => {
   console.log('Listening on 4003');
 });

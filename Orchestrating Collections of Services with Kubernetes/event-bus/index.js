@@ -7,15 +7,19 @@ app.use(bodyParser.json());
 
 const events = [];
 
-app.post('/events', (req, res) => {
+app.post('/events', async (req, res) => {
   const event = req.body;
 
   events.push(event);
 
-  axios.post('http://posts-clusterip-srv:4000/events', event);
-  axios.post('http://localhost:4001/events', event);
-  axios.post('http://localhost:4002/events', event);
-  axios.post('http://localhost:4003/events', event);
+  // posts
+  await axios.post('http://posts-clusterip:4000/events', event);
+  //comments
+  axios.post('http://comments-clusterip:4001/events', event);
+  //query
+  axios.post('http://query-clusterip:4002/events', event);
+  //moderation
+  axios.post('http://moderation-clusterip:4003/events', event);
 
   return res.send({ status: 'OK' });
 });
