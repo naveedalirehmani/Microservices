@@ -17,7 +17,7 @@ spec:
                 name: posts-clusterip
                 port:
                   number: 4000
-          - path: /post
+          - path: /posts
             pathType: Prefix
             backend:
               service:
@@ -35,6 +35,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: posts-clusterip
+                name: client-clusterip
                 port:
-                  number: 4000
+                  number: 3000
