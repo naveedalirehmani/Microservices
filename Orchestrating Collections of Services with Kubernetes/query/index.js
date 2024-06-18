@@ -40,6 +40,7 @@ const handleEvent = (type, data) => {
 };
 
 app.get('/posts', (req, res) => {
+  console.log('/posts fetch')
   return res.send(posts);
 });
 
