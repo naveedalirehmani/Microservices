@@ -13,10 +13,12 @@ app.use(cors());
 const posts = {};
 
 app.get('/posts', (req, res) => {
+  console.log('post fetch')
   return res.send(posts);
 });
 
 app.post('/posts/create', async (req, res) => {
+  console.log('post create')
   const id = randomBytes(4).toString('hex');
   const { title } = req.body;
 
@@ -43,5 +45,5 @@ app.post('/events', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log('Listening on 4000');
+  console.log('Listening on on 4000');
 });
