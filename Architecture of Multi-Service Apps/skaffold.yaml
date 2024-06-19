@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2beta26
+kind: Config
+metadata:
+  name: my-ticket-app
+build:
+  local:
+    push: false
+  artifacts:
+    - image: naveedalirehmani/auth
+      context: auth
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
+deploy:
+  kubectl:
+    manifests:
+      - ./infra/k8s/*
