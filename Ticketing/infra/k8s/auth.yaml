@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-deployment
+  labels:
+    app: auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+      - name: auth
+        image: naveedalirehmani/auth:latest
+        env:
+              - name: JWT_KEY
+                valueFrom:
+                  secretKeyRef:
+                    name: jwt-secret
+                    key: JWT_KEY
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+  labels:
+    app: auth
+spec:
+  type: ClusterIP
+  selector:
+    app: auth
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
